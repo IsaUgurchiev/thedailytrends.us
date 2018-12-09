@@ -2,25 +2,65 @@ import React, {Component} from 'react';
 import 'whatwg-fetch';
 import Item from './Item';
 
+const tumblr = require('tumblr.js');
+
 class Feed extends Component {
   constructor(props) {
     super(props);
     this.state = {
       items: []
     };
+
+    this._filterPosts = this._filterPosts.bind(this);
   }
 
   componentDidMount() {
-    fetch('https://api.tumblr.com/v2/blog/pitchersandpoets.tumblr.com/posts')
-      .then(res => {
-        console.log(res);
-        res.json();
-      })
-      .then(json => {
-        this.setState({
-          items: json
-        });
+    const client = tumblr.createClient({
+      credentials: {
+        consumer_key: 'v2Nor81YGyWkIOXJnDCKnqK0sr6FToVlX8mYH5mWEtuPuMtbvC',
+        consumer_secret: 'ZKilRQAXEntc46fQOSoidK91kELqzxW7rmwlPT5igoA4tEyh2l',
+        token: 'xBGg6QTZ8xlKNnNjIzF4zdSA62aDaudWL0NZ6URYmIHEhTVhL6',
+        token_secret: 'R7sWXj2cwIYxgpQPXjYhxawG4n5beHiFesPubfW9OWtRe8KPYa'
+      }
+    });
+
+    const me = this;
+
+    client.blogPosts('pitchersandpoets.tumblr.com', function (err, resp) {
+      const items = me._filterPosts(resp.posts);
+
+      me.setState({
+        items: items
       });
+    });
+
+    /*fetch('https://api.tumblr.com/v2/blog/pitchersandpoets.tumblr.com/posts')
+     .then(res => {
+     console.log(res);
+     res.json();
+     })
+     .then(json => {
+     this.setState({
+     items: json
+     });
+     });*/
+  }
+
+  _filterPosts(posts) {
+    return posts
+      .filter((item) => {
+        return item.type === "photo";
+      })
+      .map((item) => {
+        return {
+          id: item.id,
+          img: item.photos[0].alt_sizes[3].url,
+          text: item.caption,
+          url: item.short_url,
+          date: item.date
+        }
+      })
+
   }
   
   render() {

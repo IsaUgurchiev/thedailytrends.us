@@ -44,6 +44,7 @@
     "react-router-dom": "^4.2.2",
     "sass-loader": "^6.0.7",
     "style-loader": "^0.20.3",
+    "tumblr.js": "^2.0.0",
     "webpack": "4.19.1",
     "webpack-cli": "^2.0.13",
     "webpack-dev-middleware": "^3.0.1",
@@ -52,6 +53,7 @@
     "whatwg-fetch": "^2.0.3"
   },
   "devDependencies": {
-    "@babel/plugin-proposal-class-properties": "^7.2.1"
+    "@babel/plugin-proposal-class-properties": "^7.2.1",
+    "json-loader": "^0.5.7"
   }
 }

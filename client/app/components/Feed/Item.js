@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 
 class Item extends Component {
   numberWithSpaces = (x) => {
@@ -10,12 +11,13 @@ class Item extends Component {
     
     return (
       <div className="media text-muted pt-3">
-        
+
         <div className="media-body pb-3 mb-0 small border-bottom border-gray">
           <div className="mb-1 d-flex flex-column">
             <strong className="text-gray-dark">Name</strong>
             <a href="#">Login</a>
           </div>
+          <div><img className="" src={rec.img} /></div>
           <div dangerouslySetInnerHTML={{__html: rec.text}}/>
           <div className="mt-2 social">
 						<span className="social-item">
@@ -30,7 +32,7 @@ class Item extends Component {
 							<FontAwesomeIcon icon="heart"/>
               &nbsp;{this.numberWithSpaces(100)}
 						</span>
-            <span className="time">time</span>
+            <span className="time">{rec.date}</span>
           </div>
         </div>
       </div>

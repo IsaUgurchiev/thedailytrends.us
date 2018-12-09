@@ -96,5 +96,12 @@ module.exports = {
     new CopyWebpackPlugin([{
       from: helpers.root('client/public')
     }])
-  ]
+  ],
+  
+  node: {
+    console: true,
+    fs: 'empty',
+    net: 'empty',
+    tls: 'empty'
+  }
 };
