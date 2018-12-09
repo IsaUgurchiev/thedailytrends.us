@@ -1,0 +1,29 @@
+$font-size: 20px;
+$logo-prefix: #fff;
+$logo-postfix: #db4e3c;
+
+.logo {
+  font-size: $font-size;
+}
+
+.logo:hover {
+  text-decoration: none;
+}
+
+.logo:hover > .logo-prefix {
+  color: $logo-postfix;
+}
+
+.logo:hover > .logo-postfix {
+  color: $logo-prefix;
+}
+
+.logo-prefix {
+  color: $logo-prefix;
+  transition: all 0.3s ease-in-out;
+}
+
+.logo-postfix {
+  color: $logo-postfix;
+  transition: all 0.3s ease-in-out;
+}
