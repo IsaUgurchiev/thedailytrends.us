@@ -16,11 +16,21 @@ module.exports = class Tumblr {
   }
   
   getPosts() {
-    return this[_client].blogPosts('pitchersandpoets.tumblr.com')
-      .then(resp => Tumblr._filterPosts(resp.posts))
-      .catch(function (err) {
-        // oops
+    return Promise.all(
+      [
+        this[_client].blogAvatar('dilfosaur.tumblr.com', 64),
+        this[_client].blogPosts('dilfosaur.tumblr.com')
+      ]
+    ).then(resp => {
+      const posts = Tumblr._filterPosts(resp[1].posts);
+      return posts.map((item) => {
+        return {
+          avatar: resp[0].avatar_url,
+          login: resp[1].blog.url,
+          ...item
+        }
       });
+    });
   }
   
   static _filterPosts(posts) {
@@ -31,14 +41,15 @@ module.exports = class Tumblr {
       .map((item) => {
         return {
           id: item.id,
-          img: item.photos[0].alt_sizes[3].url,
-          text: item.caption,
+          name: item.blog_name,
+          img: item.photos[0].alt_sizes[4].url,
+          text: item.summary,
           url: item.short_url,
           date: Tumblr._formatDate(item.date)
         }
       });
   }
-
+  
   static _formatDate(strDate) {
     const months = [
       'Jan.',
@@ -68,7 +79,7 @@ module.exports = class Tumblr {
     
     return str.trim();
   }
-
+  
   static _getMinutesWithLeadingZero(dt) {
     return (dt.getMinutes() < 10 ? '0' : '') + dt.getMinutes();
   }

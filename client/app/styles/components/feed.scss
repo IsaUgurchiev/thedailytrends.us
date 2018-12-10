@@ -33,7 +33,16 @@
 }
 
 .feed-item {
+  .avatar {
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    transition: all .2s ease-in-out;
+  }
 
+  .avatar:hover {
+    transform: scale(1.2);
+  }
 }
 
 .feed-item-header {
@@ -65,7 +74,5 @@
 
   .date {
     white-space: nowrap;
-    //margin-left: 3px;
-    //float: right;
   }
 }

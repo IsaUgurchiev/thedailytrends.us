@@ -11,7 +11,7 @@ class Feed extends Component {
   }
 
   componentDidMount() {
-    const sourceApi = this.props.sourceApi;
+    const sourceApi = this.props.sourceApi.toLowerCase();
     fetch(`/api/${sourceApi}/posts`)
       .then(res => res.json())
       .then(json => {
