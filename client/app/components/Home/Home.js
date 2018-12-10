@@ -7,7 +7,7 @@ class Home extends Component {
       <div className="container-fluid">
         <div className="row">
           <div className="col-lg-4">
-            <Feed sourceName="Tumblr"/>
+            <Feed sourceName="Tumblr" sourceApi="Tumblr" sourceLogo="tumblr_logo.png"/>
           </div>
           <div className="col-lg-4">
           </div>

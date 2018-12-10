@@ -1,0 +1,71 @@
+.feed {
+
+}
+
+.feed-header {
+  .source-link {
+    color: #000;
+  }
+
+  .source-link:hover {
+    color: #007bff;
+    text-decoration: none;
+  }
+
+  .source-logo {
+    width: 32px;
+    height: 32px;
+  }
+
+  .source-name {
+    position: relative;
+    top: 4px;
+    font-size: 22px;
+  }
+}
+
+.feed-body {
+
+}
+
+.feed-footer {
+
+}
+
+.feed-item {
+
+}
+
+.feed-item-header {
+
+}
+
+.feed-item-body {
+
+}
+
+.feed-item-footer {
+  height: 19px;
+
+  .social {
+    display: inline-block;
+
+    .social-item {
+      margin-right: 20px;
+      cursor: pointer;
+      transition: all .2s ease-in-out;
+      display: inline-block;
+    }
+
+    .social-item:hover {
+      color: #007bff;
+      transform: scale(1.2);
+    }
+  }
+
+  .date {
+    white-space: nowrap;
+    //margin-left: 3px;
+    //float: right;
+  }
+}

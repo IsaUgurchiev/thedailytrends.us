@@ -13,8 +13,6 @@ const webpackConfig = require('../webpack.config');
 const isDev = process.env.NODE_ENV !== 'production';
 const port  = process.env.PORT || 8080;
 
-const cors = require('cors');
-
 // Configuration
 // ================================================================================================
 
@@ -23,7 +21,6 @@ const cors = require('cors');
 //mongoose.Promise = global.Promise;
 
 const app = express();
-app.use(cors());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 

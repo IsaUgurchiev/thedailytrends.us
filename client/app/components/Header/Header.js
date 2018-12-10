@@ -6,7 +6,7 @@ const Header = () => (
     <nav className="navbar navbar-expand-lg fixed-top navbar-dark bg-dark">
       <Link to="/" className="logo">
         <span className="logo-prefix">Daily</span>
-        <span className="logo-postfix">Trend</span>
+        <span className="logo-postfix">Trends</span>
       </Link>
     </nav>
   </header>
